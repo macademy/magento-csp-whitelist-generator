@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magento CSP Whitelist Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 400px;
+            padding: 0;
+            margin: 0;
+            font-family: Inter, Arial, sans-serif;
+            text-align: center;
+            color: #1f1d3d;
+        }
+        h1 {
+            max-width: 200px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        a,
+        a:visited {
+            color: #fff;
+        }
+        em {
+            color: #ea580c;
+        }
+        button {
+            width: 320px;
+            padding: 10px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #c2410c;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #status {
+            margin-bottom: 20px;
+        }
+        .checklist {
+            margin: 10px auto;
+            text-align: left;
+            width: 140px;
+        }
+        .checklist label {
+            display: block;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .checklist .label {
+            position: absolute;
+            top: 2px;
+            left: 24px;
+        }
+        #scanButton {
+            background-color: #0284c7;
+        }
+        #scanButton:hover {
+            background-color: #0369a1;
+        }
+        #scanStatus {
+            font-size: 48px;
+        }
+        .credits {
+            margin-top: 20px;
+            padding: 20px 0;
+            width: 100%;
+            background: #1f1d3d;
+            color: #fff;
+        }
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        .top-grid {
+            display: grid;
+            grid-template-columns: 0.3fr 1fr;
+            margin: 20px auto;
+            max-width: 300px;
+            gap: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1fr;
+            margin: 0 auto;
+        }
+        .grid-item {
+            align-content: center;
+        }
+        .magento-csp-logo {
+            width: 60px;
+            height: 60px;
+        }
+        .macademy-tm {
+            margin-top: -10px;
+        }
+        .documentation {
+            text-align: center;
+            margin-top: 5px;
+        }
+        .documentation a {
+            color: #ea580c;
+        }
+    </style>
+</head>
+<body>
+<div class="top-grid">
+    <div class="grid-item">
+        <img src="icons/icon512.png" alt="Magento CSP Logo" class="magento-csp-logo"/>
+    </div>
+    <div class="grid-item">
+        <h1>Magento CSP Whitelist Generator</h1>
+        <div class="documentation"><a href="https://m.academy/tools/magento-csp-whitelist-generator/?utm_source=opensource&utm_medium=browser-plugin&utm_campaign=magento-csp-whitelist-generator&utm_content=text&utm_term=documentation" target="_blank">Documentation</a></div>
+    </div>
+    <div class="grid-item">
+        <div id="scanStatus">😄</div>
+    </div>
+    <div class="grid-item">
+        <div class="checklist">
+            <label><input type="checkbox" id="homePage"> <span class="label">Home Page</span></label>
+            <label><input type="checkbox" id="categoryPage"> <span class="label">Category Page</span></label>
+            <label><input type="checkbox" id="productPage"> <span class="label">Product Page</span></label>
+            <label><input type="checkbox" id="cartPage"> <span class="label">Shopping Cart Page</span></label>
+            <label><input type="checkbox" id="checkoutPage"> <span class="label">Checkout Page</span></label>
+        </div>
+    </div>
+</div>
+<div id="status">Browse to a page and click <strong>Scan Current Page</strong>!</div>
+<button id="scanButton">Scan Current Page</button>
+<button id="generateButton">Complete & Generate</button>
+<div class="credits">
+    <div class="grid">
+        <div class="grid-item">
+            <a href="https://m.academy" target="_blank">
+                <svg version="1.1" class="macademy-tm mx-auto" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 200 200" width="80" height="80"><defs><style>
+                .macademy-tm-st1-ffffff { fill: #ffffff; }
+                .macademy-tm-st3-ffffff { fill: #ffffff; }
+                </style></defs><path class="macademy-tm-st1-ffffff hexagon" d="M152.5,64l-44.6-25.5c-3.2-1.8-6.9-2.8-10.6-2.8c-3.7,0-7.4,1-10.6,2.8L42.1,64 c-6.6,3.8-10.8,10.9-10.8,18.6v50.8c0,7.7,4.1,14.8,10.8,18.6l44.6,25.5c3.2,1.8,6.9,2.8,10.6,2.8c3.7,0,7.4-1,10.6-2.8l44.6-25.5 c6.6-3.8,10.8-10.9,10.8-18.6V82.6C163.3,74.9,159.2,67.8,152.5,64z M154.6,135.6c-1,1.6-2.3,3-4,3.9c-1.6,1-3.4,1.5-5.4,1.5c-1.1,0-2.1-0.1-3.1-0.4l-41.7,23.8 c-0.2,0.1-0.5,0.3-0.8,0.4c-0.5,0.2-1,0.3-1.6,0.4c-0.3,0-0.5,0.1-0.8,0.1c-1.1,0-2.2-0.3-3.2-0.8L49.5,139c-0.5-0.3-0.9-0.6-1.3-1 c-1-1-1.6-2.3-1.8-3.7c0-0.3-0.1-0.6-0.1-0.8V82.6c0-2.3,1.2-4.4,3.2-5.5l44.6-25.5c1-0.6,2.1-0.8,3.2-0.8c0.3,0,0.5,0,0.8,0.1 c0.5,0.1,1.1,0.2,1.6,0.4c0.3,0.1,0.5,0.2,0.8,0.4L145.1,77c0.5,0.3,0.9,0.6,1.3,1c0.4,0.4,0.7,0.8,1,1.3c0.6,1,0.9,2.1,0.9,3.2 v37.3c1.7,0.5,3.2,1.4,4.6,2.7c2.2,2.1,3.3,4.6,3.3,7.6C156.2,132.2,155.7,134,154.6,135.6z" fill-rule="evenodd"></path><g><path class="macademy-tm-st3-ffffff letter-m" d="M64.8,78.8h17.4l14.8,36h0.7l14.8-36h17.4V137h-13.7v-35.7h-0.5l-14,35.4h-8.8l-14-35.6h-0.5V137H64.8V78.8z"></path></g><g><path class="macademy-tm-st3-ffffff dot" d="M145.3,137c-1.9,0-3.5-0.7-4.8-2c-1.3-1.3-2-2.9-2-4.8c0-1.9,0.7-3.4,2-4.8c1.3-1.3,2.9-2,4.8-2 c1.8,0,3.4,0.7,4.8,2c1.4,1.3,2,2.9,2,4.8c0,1.2-0.3,2.4-1,3.4c-0.6,1-1.5,1.9-2.5,2.5C147.7,136.7,146.5,137,145.3,137z"></path></g></svg>
+            </a>
+            <div>Created by <a href="https://m.academy/?utm_source=opensource&utm_medium=browser-plugin&utm_campaign=magento-csp-whitelist-generator&utm_content=text&utm_term=macademy" target="_blank" >M.academy</a></div>
+        </div>
+        <div class="grid-item">
+            <div class="tagline"><strong>The simplest way to <em style="color: #ea580c;">master</em> Magento development</strong></div>
+        </div>
+    </div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
