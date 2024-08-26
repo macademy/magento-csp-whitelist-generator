@@ -29,7 +29,7 @@ Setting up `csp_whitelist.xml` files can be confusing and time-consuming. This m
 
 ## Documentation
 
-Install the browser plugin from the Google Chrome Web Store.
+Install the browser plugin from the [Google Chrome Web Store](https://chromewebstore.google.com/detail/magento-csp-whitelist-gen/jkaepigndllbkeedihpnhchadplfnafi).
 
 Simply browse to the main pages of your Magento site (home page, category page, product page, shopping cart page, and checkout page) one-by-one. Click the Scan Current Page for each page, check the box to confirm that you scanned it, and then proceed with the next page, repeating the process until you've scanned all pages. Note that you can also scan pages that are not listed here, such as CMS pages, custom pages, or any other pages that are unique to your site which may contain external scripts.
 
